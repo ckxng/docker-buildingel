@@ -10,17 +10,13 @@ FROM    centos:8 as builder
 ARG     os_root=/os_root_image/rootfs
 
 # replace the repos
-RUN     rm /etc/yum.repos.d/*
+RUN     sed -i 's/enabled=1/enabled=0/' /etc/yum.repos.d/*
 ADD     ./repo.repo /etc/yum.repos.d/
 ADD     ./packages.txt /
 
 # make sure everything is the latest
 RUN     set -eux; mkdir -p ${os_root} && \
         rpm --root ${os_root} --initdb && \
-        yum -y --installroot=${os_root} \
-        --setopt=override_install_langs=en_US.utf8 \
-        install \
-        kernel && \
         yum -y --installroot=${os_root} \
         --setopt=override_install_langs=en_US.utf8 \
         install \
