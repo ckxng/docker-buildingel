@@ -1,0 +1,14 @@
+[BaseOS]
+name=CentOS-$releasever - Base
+baseurl=http://mirror.centos.org/centos/8.1.1911/BaseOS/x86_64/os/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+exclude=kernel-debug*
+
+[AppStream]
+name=CentOS-$releasever - AppStream
+baseurl=http://mirror.centos.org/centos/8.1.1911/AppStream/x86_64/os/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
